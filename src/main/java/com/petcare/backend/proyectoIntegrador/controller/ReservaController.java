@@ -1,6 +1,7 @@
 package com.petcare.backend.proyectoIntegrador.controller;
 
 import com.petcare.backend.proyectoIntegrador.DTO.ReservaDTO;
+import com.petcare.backend.proyectoIntegrador.DTO.ReservaResponse;
 import com.petcare.backend.proyectoIntegrador.config.JwtService;
 import com.petcare.backend.proyectoIntegrador.entity.Reserva;
 import com.petcare.backend.proyectoIntegrador.entity.ReservaFecha;
@@ -49,8 +50,17 @@ public class ReservaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Reserva>> listarTodos() {
-        return new ResponseEntity<>(reservaService.listarTodos(), HttpStatus.OK);
+    public ResponseEntity<List<ReservaResponse>> listarTodos(@RequestHeader("Authorization") String token) {
+        String email = jwtService.extractUsername(token.replace("Bearer ", ""));
+        Usuario usuario = usuarioService.buscarPorEmail(email).orElseThrow();
+
+        List<ReservaResponse> response = reservaService
+                .listarPorUsuario(usuario.getIdUsuario())
+                .stream()
+                .map(ReservaResponse::new)
+                .toList();
+
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/usuario/{usuarioId}")

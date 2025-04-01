@@ -1,6 +1,7 @@
 package com.petcare.backend.proyectoIntegrador.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -55,7 +56,7 @@ public class Reserva {
 
     @ManyToOne
     @JoinColumn(name = "id_servicio")
-    @JsonIgnore
+    @JsonIgnoreProperties({"reservas"})
     private Servicio servicio;
 }
 

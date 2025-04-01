@@ -53,6 +53,7 @@ public class Servicio {
     private Integer totalValoraciones;
 
     @OneToMany(mappedBy = "servicio")
+    @JsonIgnore
     private List<DetallePedido> detallePedidos;
 
     @ManyToOne(fetch = FetchType.LAZY)
