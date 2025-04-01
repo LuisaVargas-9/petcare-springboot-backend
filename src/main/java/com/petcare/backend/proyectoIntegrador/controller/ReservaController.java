@@ -43,9 +43,9 @@ public class ReservaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Reserva> obtenerPorId(@PathVariable Integer id) {
+    public ResponseEntity<ReservaResponse> obtenerPorId(@PathVariable Integer id) {
         return reservaService.obtenerPorId(id)
-                .map(reserva -> new ResponseEntity<>(reserva, HttpStatus.OK))
+                .map(reserva -> new ResponseEntity<>(new ReservaResponse(reserva), HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
