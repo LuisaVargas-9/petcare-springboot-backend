@@ -1,6 +1,7 @@
 package com.petcare.backend.proyectoIntegrador.service.impl;
 
 import com.petcare.backend.proyectoIntegrador.DTO.ServiceRequestFilters;
+import com.petcare.backend.proyectoIntegrador.DTO.ServicioResponse;
 import com.petcare.backend.proyectoIntegrador.entity.*;
 import com.petcare.backend.proyectoIntegrador.repository.*;
 import com.petcare.backend.proyectoIntegrador.service.IServicioService;
@@ -69,8 +70,13 @@ public class ServicioServiceImpl implements IServicioService {
     }
     
     @Override
-    public List<Servicio> listarTodos() {
+    public List<ServicioResponse> listarTodos() {
         return servicioRepository.findActivos();
+    }
+
+    @Override
+    public List<ServicioResponse> findByCategoriasIds(List<Long> categorias) {
+        return servicioRepository.findByCategoriaIds(categorias);
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.petcare.backend.proyectoIntegrador.service;
 
 import com.petcare.backend.proyectoIntegrador.DTO.ServiceRequestFilters;
+import com.petcare.backend.proyectoIntegrador.DTO.ServicioResponse;
+import com.petcare.backend.proyectoIntegrador.entity.Categoria;
 import com.petcare.backend.proyectoIntegrador.entity.Servicio;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,7 +13,8 @@ import java.util.Optional;
 public interface IServicioService {
     Servicio crear(Servicio servicio, List<String> imageUrls);
     Optional<Servicio> obtenerPorId(Integer id);
-    List<Servicio> listarTodos();
+    List<ServicioResponse> listarTodos();
+    List<ServicioResponse> findByCategoriasIds(List<Long> categorias);
     List<String> listarSugerencias(String param);
     List<Servicio> getFilteredServices(ServiceRequestFilters serviceRequestFilters);
     Servicio asignarCategoria(Integer idServicio, Long idCategoria);

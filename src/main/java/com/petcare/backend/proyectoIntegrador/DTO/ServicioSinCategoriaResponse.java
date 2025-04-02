@@ -19,11 +19,11 @@ public class ServicioSinCategoriaResponse {
     private String descripcion;
     private BigDecimal precio;
     private List<ServicioImagen> imagenUrls;
-    private Boolean disponibilidad;
-    private LocalDateTime fechaRegistro;
-    private LocalDateTime fechaActualizacion;
-    private boolean esBorrado;
-    private LocalDateTime fechaBorrado;
+    //private Boolean disponibilidad;
+    //private LocalDateTime fechaRegistro;
+    //private LocalDateTime fechaActualizacion;
+    //private boolean esBorrado;
+    //private LocalDateTime fechaBorrado;
     private Double rating;
     private List<CaracteristicaDTO> caracteristicas;
 }

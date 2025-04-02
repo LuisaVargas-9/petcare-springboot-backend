@@ -76,31 +76,39 @@ public class ServicioController {
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
 
+//    @GetMapping
+//    public Map<String, Object> obtenerServicios(@RequestParam(required = false) List<Long> categoriaIds) {
+//        List<Servicio> servicios = servicioService.listarTodos();
+//
+//        // Filtrar por IDs de categoría si se proporcionan
+//        List<Servicio> serviciosFiltrados = (categoriaIds != null && !categoriaIds.isEmpty())
+//                ? servicios.stream()
+//                .filter(servicio -> servicio.getCategoria().getId_categoria() != null &&
+//                        categoriaIds.contains(servicio.getCategoria().getId_categoria()))
+//                .toList()
+//                : servicios;
+//
+//        // Convertir a DTO
+//        List<ServicioResponse> respuesta = serviciosFiltrados.stream()
+//                .map(DtoConverter::convertirARespuesta)
+//                .collect(Collectors.toList());
+//
+//        // Crear respuesta con datos adicionales
+//        Map<String, Object> resultado = new HashMap<>();
+//        resultado.put("totalServicios", servicios.size());
+//        resultado.put("serviciosFiltrados", respuesta.size());
+//        resultado.put("listaServicios", respuesta);
+//
+//        return resultado;
+//    }
+
     @GetMapping
-    public Map<String, Object> obtenerServicios(@RequestParam(required = false) List<Long> categoriaIds) {
-        List<Servicio> servicios = servicioService.listarTodos();
-
-        // Filtrar por IDs de categoría si se proporcionan
-        List<Servicio> serviciosFiltrados = (categoriaIds != null && !categoriaIds.isEmpty())
-                ? servicios.stream()
-                .filter(servicio -> servicio.getCategoria().getId_categoria() != null &&
-                        categoriaIds.contains(servicio.getCategoria().getId_categoria()))
-                .toList()
-                : servicios;
-
-        // Convertir a DTO
-        List<ServicioResponse> respuesta = serviciosFiltrados.stream()
-                .map(DtoConverter::convertirARespuesta)
-                .collect(Collectors.toList());
-
-        // Crear respuesta con datos adicionales
-        Map<String, Object> resultado = new HashMap<>();
-        resultado.put("totalServicios", servicios.size());
-        resultado.put("serviciosFiltrados", respuesta.size());
-        resultado.put("listaServicios", respuesta);
-
-        return resultado;
+    public List<ServicioResponse> listarFiltrados(@RequestParam(required = false) List<Long> categoriaIds) {
+        return (categoriaIds == null || categoriaIds.isEmpty())
+                ? servicioService.listarTodos()
+                : servicioService.findByCategoriasIds(categoriaIds);
     }
+
 
 
     @PutMapping("/{servicioId}/categorias/{categoriaId}")
@@ -194,12 +202,12 @@ public class ServicioController {
 
     @GetMapping("/servicio-list")
     public ResponseEntity<List<ServicioResponse>> listarServicios() {
-        List<Servicio> servicios = servicioService.listarTodos();
-        List<ServicioResponse> respuesta = servicios.stream()
-                .map(DtoConverter::convertirARespuesta)
-                .collect(Collectors.toList());
-        
-        return ResponseEntity.ok(respuesta);
+        List<ServicioResponse> servicios = servicioService.listarTodos();
+//        List<ServicioResponse> respuesta = servicios.stream()
+//                .map(DtoConverter::convertirARespuesta)
+//                .collect(Collectors.toList());
+//
+        return ResponseEntity.ok(servicios);
     }
 
     private ServicioRequest parseServicioRequest(String datosJson) throws IOException {
