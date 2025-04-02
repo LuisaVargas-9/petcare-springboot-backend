@@ -18,14 +18,14 @@ public class DtoConverter {
                 servicio.getDescripcion(),
                 servicio.getPrecio(),
                 servicio.getImagenUrls(),
-                servicio.getEsDisponible(),
-                servicio.getFechaRegistro(),
-                servicio.getFechaActualizacion(),
                 servicio.isEsBorrado(),
-                servicio.getFechaBorrado(),
                 servicio.getCategoria(),
                 servicio.getRating(),
                 caracteristicas
+                //servicio.getEsDisponible(),
+                //servicio.getFechaRegistro(),
+                //servicio.getFechaActualizacion(),
+                //servicio.getFechaBorrado(),
         );
     }
 
@@ -38,13 +38,14 @@ public class DtoConverter {
                 servicio.getDescripcion(),
                 servicio.getPrecio(),
                 servicio.getImagenUrls(),
-                servicio.getEsDisponible(),
-                servicio.getFechaRegistro(),
-                servicio.getFechaActualizacion(),
-                servicio.isEsBorrado(),
-                servicio.getFechaBorrado(),
                 servicio.getRating(),
                 caracteristicas
+               // servicio.getEsDisponible(),
+               // servicio.getFechaRegistro(),
+               // servicio.getFechaActualizacion(),
+               // servicio.isEsBorrado(),
+               // servicio.getFechaBorrado(),
+
         );
     }
 
