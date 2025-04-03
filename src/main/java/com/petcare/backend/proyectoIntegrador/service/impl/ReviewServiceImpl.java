@@ -115,6 +115,12 @@ public class ReviewServiceImpl implements IReviewService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public Double obtenerPromedioPuntuacionPorServicio(Integer idServicio) {
+        Double promedio = reviewRepository.getAverageRatingByServicio(idServicio);
+        return promedio != null ? promedio : 0.0;
+    }
+
     private ReviewResponse convertToResponse(Review review) {
         return new ReviewResponse(
                 review.getIdReview(),
