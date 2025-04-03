@@ -1,17 +1,10 @@
 package com.petcare.backend.proyectoIntegrador.service.impl;
 
 import com.petcare.backend.proyectoIntegrador.DTO.ReservaDTO;
-import com.petcare.backend.proyectoIntegrador.DTO.ReservaResponse;
 import com.petcare.backend.proyectoIntegrador.entity.*;
 import com.petcare.backend.proyectoIntegrador.repository.*;
 import com.petcare.backend.proyectoIntegrador.service.IReservaService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
