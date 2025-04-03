@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/favoritos")
+@RequestMapping("api/favoritos")
 @CrossOrigin(origins = "*")
 public class FavoritosController {
 

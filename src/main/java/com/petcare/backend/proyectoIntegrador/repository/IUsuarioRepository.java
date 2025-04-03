@@ -22,4 +22,6 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
     List<Usuario> findActivos();
 
     Usuario save(Usuario usuario);
+
+
 } 

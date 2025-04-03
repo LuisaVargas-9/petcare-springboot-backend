@@ -1,5 +1,6 @@
 package com.petcare.backend.proyectoIntegrador.service.impl;
 
+import com.petcare.backend.proyectoIntegrador.DTO.UserProfileResponse;
 import com.petcare.backend.proyectoIntegrador.entity.ERole;
 import com.petcare.backend.proyectoIntegrador.entity.Usuario;
 import com.petcare.backend.proyectoIntegrador.repository.IUsuarioRepository;
@@ -29,7 +30,12 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public Optional<Usuario> obtenerPorId(Integer id) {
         return usuarioRepository.findById(id);
     }
-    
+
+    @Override
+    public Optional<UserProfileResponse> obtenerPorIdResponse(Integer id) {
+        return usuarioRepository.findById(id)
+                .map(UserProfileResponse::new);
+    }
     @Override
     public List<Usuario> listarTodos() {
         return usuarioRepository.findActivos();

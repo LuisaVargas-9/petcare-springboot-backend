@@ -33,11 +33,18 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> obtenerPorId(@PathVariable Integer id) {
-        return usuarioService.obtenerPorId(id)
+    public ResponseEntity<UserProfileResponse> obtenerPorId(@PathVariable Integer id) {
+        return usuarioService.obtenerPorIdResponse(id)
                 .map(usuario -> new ResponseEntity<>(usuario, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Usuario> obtenerPorId(@PathVariable Integer id) {
+//        return usuarioService.obtenerPorId(id)
+//                .map(usuario -> new ResponseEntity<>(usuario, HttpStatus.OK))
+//                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+//    }
 
     @GetMapping
     public ResponseEntity<List<Usuario>> listarTodos() {
