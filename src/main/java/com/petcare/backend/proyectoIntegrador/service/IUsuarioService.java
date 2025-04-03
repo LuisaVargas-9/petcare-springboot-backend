@@ -1,5 +1,6 @@
 package com.petcare.backend.proyectoIntegrador.service;
 
+import com.petcare.backend.proyectoIntegrador.DTO.UserProfileResponse;
 import com.petcare.backend.proyectoIntegrador.entity.ERole;
 import com.petcare.backend.proyectoIntegrador.entity.Usuario;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Optional;
 public interface IUsuarioService {
     Usuario crear(Usuario usuario);
     Optional<Usuario> obtenerPorId(Integer id);
+    Optional<UserProfileResponse> obtenerPorIdResponse(Integer id);
     List<Usuario> listarTodos();
     List<Usuario> buscarPorNombre(String nombre);
     Optional<Usuario> buscarPorEmail(String email);
