@@ -11,5 +11,7 @@ public class ReservaDTO {
     private Integer idUsuario;
     private Integer idEspecie;
     private Integer idServicio;
+    private String requerimientos;
+    private String codigo;
 }
 

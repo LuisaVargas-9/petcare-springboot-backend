@@ -29,4 +29,6 @@ public interface IReservaService {
 
     List<LocalDate> getFechasConfirmadas(Integer idServicio);
     Reserva crearReserva(ReservaDTO reservaDTO);
+    Reserva editarReserva(int idReserva, ReservaDTO reserva);
+    String cancelarReserva(int idReserva);
 }
