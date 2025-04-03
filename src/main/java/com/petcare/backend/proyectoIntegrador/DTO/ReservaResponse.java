@@ -23,6 +23,8 @@ public class ReservaResponse {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private String nombreCategoria;
+    private String requerimientos;
+    private String codigo;
 
 
     public ReservaResponse(Reserva reserva) {

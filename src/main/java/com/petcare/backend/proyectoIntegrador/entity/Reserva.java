@@ -44,6 +44,12 @@ public class Reserva {
     @Column(name = "fecha_borrado")
     private LocalDateTime fechaBorrado;
 
+    @Column(name = "requerimientos")
+    private String requerimientos;
+
+    @Column(name = "codigo")
+    private String codigo;
+
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     @JsonIgnore

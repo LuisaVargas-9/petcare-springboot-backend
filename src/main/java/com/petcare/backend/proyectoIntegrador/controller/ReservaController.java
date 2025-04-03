@@ -10,6 +10,7 @@ import com.petcare.backend.proyectoIntegrador.entity.Usuario;
 import com.petcare.backend.proyectoIntegrador.service.IReservaService;
 import com.petcare.backend.proyectoIntegrador.service.IServicioService;
 import com.petcare.backend.proyectoIntegrador.service.IUsuarioService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/reservas")
@@ -128,6 +130,24 @@ public class ReservaController {
     public ResponseEntity<Reserva> crearReserva(@RequestBody ReservaDTO reservaDTO) {
         Reserva nuevaReserva = reservaService.crearReserva(reservaDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevaReserva);
+    }
+
+
+    @PutMapping("/{idReserva}/editar")
+    public ResponseEntity<ReservaResponse> editarFechasReserva(@PathVariable int idReserva, @RequestBody ReservaDTO reservaEditar) {
+        Reserva reserva = reservaService.editarReserva(idReserva, reservaEditar);
+        if(reserva != null) {
+            ReservaResponse reservaEditada = new ReservaResponse(reserva);
+            return ResponseEntity.status(HttpStatus.OK).body(reservaEditada);
+        }else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @PutMapping("/{idReserva}/cancelar")
+    public ResponseEntity<String> cancelarReserva(@PathVariable int idReserva) {
+        String respuestaReserva = reservaService.cancelarReserva(idReserva);
+        if(respuestaReserva != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(respuestaReserva);
+        }else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 }
