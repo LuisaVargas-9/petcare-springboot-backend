@@ -84,6 +84,7 @@ public class ReservaServiceImpl implements IReservaService {
         if (reserva.isPresent()) {
             Reserva r = reserva.get();
             r.setEsBorrado(true);
+            r.setEstado("ELIMINADO");
             r.setFechaBorrado(LocalDateTime.now());
             reservaRepository.save(r);
         }
