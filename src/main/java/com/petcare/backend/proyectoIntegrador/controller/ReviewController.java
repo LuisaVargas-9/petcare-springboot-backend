@@ -56,4 +56,10 @@ public class ReviewController {
             @PathVariable Integer idUsuario) {
         return ResponseEntity.ok(reviewService.obtenerReviewsPorUsuario(idUsuario));
     }
+
+    @GetMapping("/promedio/{idServicio}")
+    public ResponseEntity<Double> obtenerPromedioPuntuacion(@PathVariable Integer idServicio) {
+        Double promedio = reviewService.obtenerPromedioPuntuacionPorServicio(idServicio);
+        return ResponseEntity.ok(promedio);
+    }
 }

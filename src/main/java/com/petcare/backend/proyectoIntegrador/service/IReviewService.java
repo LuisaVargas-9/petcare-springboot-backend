@@ -18,4 +18,12 @@ public interface IReviewService {
     List<ReviewResponse> obtenerReviewsPorServicio(Integer idServicio);
 
     List<ReviewResponse> obtenerReviewsPorUsuario(Integer idUsuario);
+
+    /**
+     * Calcula el promedio de puntuaciones para un servicio específico
+     * 
+     * @param idServicio ID del servicio
+     * @return Promedio de puntuaciones o 0 si no hay reseñas
+     */
+    Double obtenerPromedioPuntuacionPorServicio(Integer idServicio);
 }
